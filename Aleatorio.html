@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Aleatorios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(fondos-de-pantalla-azules-bonitos-3-scaled.jpg);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: cornsilk;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #logo {
+            max-width: 30%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color:darkblue;
+        }
+
+        button {
+            background-color:fuchsia;
+            color: beige;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #numeroAleatorio {
+            font-size: 36px;
+            color: darkcyan;
+        }
+        /* Estilos para el recuadro que contiene la marquesina */
+.marquee-container {
+    width: 300px; /* Ancho del recuadro */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    border: 1px solid #ccc; /* Borde para el recuadro */
+}
+
+/* Estilos para la marquesina */
+.marquee {
+    white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+    animation: marquee 8s linear infinite; /* Configura la animación de la marquesina */
+}
+
+/* Animación de la marquesina */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <a href="https://isanagustin.edu.pe/portal/" target="_blank">
+            <img id="logo" src="logotipo.png" alt="Logo">
+        </a>
+      
+       <p>Presiona el botón "Iniciar" para empezar el sorteo:</p>
+    <button id="iniciarSorteo" onclick="iniciarSorteo()">Iniciar</button>
+    <button id="detenerSorteo" onclick="detenerSorteo()" disabled>Detener</button>
+    <p>Número Aleatorio: <span id="numeroAleatorio">-</span></p>
+    </div>
+
+    <script>
+        var intervalId;
+
+        function generarNumeroAleatorio() {
+            return Math.floor(Math.random() * 31);
+        }
+
+        function mostrarNumeroAleatorio() {
+            var numeroAleatorio = generarNumeroAleatorio();
+            document.getElementById("numeroAleatorio").innerHTML = numeroAleatorio;
+        }
+
+        function iniciarSorteo() {
+            intervalId = setInterval(mostrarNumeroAleatorio, 1000);
+            document.getElementById("iniciarSorteo").disabled = true;
+            document.getElementById("detenerSorteo").disabled = false;
+        }
+
+        function detenerSorteo() {
+            clearInterval(intervalId);
+            document.getElementById("iniciarSorteo").disabled = false;
+            document.getElementById("detenerSorteo").disabled = true;
+        }
+    </script>
+    
+   
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+      Katty Roxana Calle Peña
+    </marquee>
+    
+    
+</body>
+</html>
